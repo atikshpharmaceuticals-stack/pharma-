@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Atiksh Pharma — Advancing Healthcare Through Quality</title>
+  <meta name="description" content="Discover Atiksh Pharma's mission, quality philosophy, and corporate commitment to delivering high-efficacy certified pharmaceutical formulations.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50: '#F0F7FF',
+              100: '#E0F2FE',
+              800: '#172554',
+              900: '#0F172A',
+              primary: '#0A192F',
+              dark: '#07111E',
+            },
+            teal: {
+              50: '#F0FDFA',
+              100: '#CCFBF1',
+              200: '#99F6E4',
+              500: '#14B8A6',
+              600: '#0D9488',
+              700: '#0F766E',
+              800: '#115E59',
+              900: '#134E4A',
+            },
+            charcoal: '#0F172A',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-slate-800 antialiased flex flex-col min-h-screen">
+
+  <!-- STICKY NAVBAR -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group py-1">
+          <img src="images/symbol.png" alt="Atiksh Pharma" class="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform shrink-0">
+          <div class="flex flex-col justify-center leading-[1.02]">
+            <span class="text-2xl sm:text-[25px] font-black tracking-tight font-brand" style="color: #0A192F;">Atiksh</span>
+            <span class="text-2xl sm:text-[25px] font-black tracking-tight font-brand" style="color: #0D9488;">Pharma</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-sm text-slate-700">
+          <a href="index.html" class="nav-link hover:text-navy-primary">Home</a>
+          <a href="about.html" class="nav-link active">About Us</a>
+          <a href="products.html" class="nav-link hover:text-navy-primary">Products</a>
+          
+          <a href="contact.html" class="nav-link hover:text-navy-primary">Contact</a>
+        </nav>
+
+        <!-- Right CTA & Mobile Hamburger -->
+        <div class="flex items-center gap-3">
+          <!-- User Profile / Sign In Container -->
+          <div id="public-nav-auth-container" class="flex items-center gap-2">
+            <button type="button" data-open-auth-modal="signin" onclick="openVisitorAuthModal('signin'); return false;" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-slate-700 hover:text-teal-700 bg-slate-100 hover:bg-slate-200/80 rounded-xl transition-all border border-slate-200 cursor-pointer shadow-xs">
+              <i data-lucide="user" class="w-3.5 h-3.5 text-teal-600"></i>
+              <span>Sign In</span>
+            </button>
+          </div>
+
+          <a href="contact.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-white rounded-xl shadow-md transition-all hover:bg-teal-700" style="background-color:#0D9488;">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+            <span>Enquire Now</span>
+          </a>
+
+          <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100" aria-label="Toggle navigation">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-2 text-sm font-semibold">
+      <!-- Mobile Auth Container -->
+      <div id="mobile-nav-auth-container" class="pb-2 mb-2 border-b border-slate-100">
+        <button type="button" data-open-auth-modal="signin" onclick="openVisitorAuthModal('signin'); return false;" class="w-full py-2.5 px-3 text-xs font-bold text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer">
+          <i data-lucide="user" class="w-3.5 h-3.5 text-teal-600"></i>
+          <span>Sign In / Create Account</span>
+        </button>
+      </div>
+      <a href="index.html" class="block py-2 px-3 text-slate-700 hover:bg-slate-50 rounded-lg">Home</a>
+      <a href="about.html" class="block py-2 px-3 text-teal-700 bg-teal-50 rounded-lg">About Us</a>
+      <a href="products.html" class="block py-2 px-3 text-slate-700 hover:bg-slate-50 rounded-lg">Products Catalogue</a>
+      
+      <a href="contact.html" class="block py-2 px-3 text-slate-700 hover:bg-slate-50 rounded-lg">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="bg-navy-gradient text-white py-16 border-b border-slate-800" style="background: linear-gradient(135deg, #07111E 0%, #0A192F 50%, #172554 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-300 bg-white/10 px-3 py-1 rounded-md inline-block mb-3" data-site-key="aboutHeroBadge">
+          Corporate Identity &amp; Philosophy
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-black font-brand tracking-tight" data-site-key="aboutHeroTitle">
+          Advancing Healthcare Through Quality
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base mt-2 leading-relaxed" data-site-key="aboutHeroDescription">
+          Atiksh Pharma is dedicated to building trustworthy, science-led pharmaceutical relationships through uncompromising quality, dependable supply, and clinical integrity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT DETAILED OVERVIEW -->
+  <main class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      
+      <!-- Section 1: Introduction Grid -->
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-md" data-site-key="aboutWhoBadge">
+            Who We Are
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-brand" data-site-key="aboutWhoTitle">
+            A Committed Pharmaceutical Enterprise
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed" data-site-key="aboutWhoParagraph1">
+            Atiksh Pharma was founded with a singular commitment: to deliver reliable, high-efficacy pharmaceutical medicines across critical therapeutic domains. We understand that healthcare providers and institutions rely on consistency, safety, and strict regulatory compliance.
+          </p>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed" data-site-key="aboutWhoParagraph2">
+            Headquartered in India with a wide-ranging distribution network, Atiksh Pharma bridges patient therapeutic requirements with modern, certified manufacturing capabilities.
+          </p>
+
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-2">
+            <div class="flex items-center gap-2 font-bold text-slate-900">
+              <i data-lucide="shield-alert" class="w-4 h-4 text-teal-600"></i>
+              <span>Our Foundational Principle:</span>
+            </div>
+            <p class="italic text-slate-600">
+              "We measure our success not just by volume, but by the trust healthcare professionals place in every tablet, capsule, injection, and liquid formulation bearing our name."
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100 relative">
+            <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&auto=format&fit=crop&q=80" alt="Atiksh Pharma Corporate Laboratory" data-site-key="aboutWhoImage" class="w-full h-96 object-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Mission, Vision, Values -->
+      <div class="grid sm:grid-cols-3 gap-8">
+        
+        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 flex flex-col justify-between pharma-card">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center mb-6">
+              <i data-lucide="target" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2" data-site-key="aboutMissionTitle">Our Mission</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-site-key="aboutMissionText">
+              To enhance patient outcomes by providing consistently high-quality, scientifically validated pharmaceuticals at accessible costs across hospital, institutional, and retail channels.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 flex flex-col justify-between pharma-card">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center mb-6">
+              <i data-lucide="eye" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2" data-site-key="aboutVisionTitle">Our Vision</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-site-key="aboutVisionText">
+              To be recognized as one of India's most dependable, ethically governed pharmaceutical partners, revered for clinical precision and supply excellence.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 flex flex-col justify-between pharma-card">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center mb-6">
+              <i data-lucide="gem" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2" data-site-key="aboutValuesTitle">Core Values</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-site-key="aboutValuesText">
+              Scientific Integrity, Transparency, Zero Quality Compromise, Customer Centricity, and Continuous Improvement in all operations.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Section 3: Operations & Distribution Reach -->
+      <div class="p-8 sm:p-12 rounded-3xl bg-navy-gradient text-white border border-slate-800" style="background: linear-gradient(135deg, #07111E 0%, #0A192F 50%, #172554 100%);">
+        <div class="max-w-3xl mb-8">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-400 bg-white/10 px-3 py-1 rounded-md inline-block mb-3">
+            Supply Capabilities
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black font-brand">
+            Pan-India Distribution &amp; Institutional Supply
+          </h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-2 leading-relaxed">
+            Our distribution infrastructure is calibrated to meet urgent hospital inventory requirements, government tenders, and trade supply with express logistics turnaround.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-6 text-xs">
+          <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+            <strong class="text-teal-300 block mb-1 text-sm font-bold">Finished Formulations</strong>
+            <p class="text-slate-300">Ready-to-ship catalog spanning solid orals, liquid orals, injectables, and topicals.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+            <strong class="text-teal-300 block mb-1 text-sm font-bold">Hospital Supply</strong>
+            <p class="text-slate-300">Direct supply of high-grade formulations for multi-specialty healthcare networks.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+            <strong class="text-teal-300 block mb-1 text-sm font-bold">Institutional Tenders</strong>
+            <p class="text-slate-300">Competitive rate contracts for multi-specialty hospital networks and healthcare trusts.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- PREMIUM DARK FOOTER -->
+  <footer class="bg-navy-dark text-slate-300 text-xs pt-16 pb-8 border-t border-slate-800" style="background-color:#07111E;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+        
+        <!-- Company Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-3 group">
+            <img src="images/symbol-light.png" alt="Atiksh Pharma" class="h-10 sm:h-11 w-auto object-contain shrink-0">
+            <div class="flex flex-col justify-center leading-[1.02]">
+              <span class="text-2xl sm:text-[25px] font-black tracking-tight text-white font-brand">Atiksh</span>
+              <span class="text-2xl sm:text-[25px] font-black tracking-tight text-teal-400 font-brand">Pharma</span>
+            </div>
+          </a>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+            Atiksh Pharma is a healthcare and pharmaceutical enterprise committed to ethical business practices, high formulation efficacy, and nationwide institutional supply.
+          </p>
+          <div class="pt-1 text-[11px] text-slate-400 space-y-1">
+            <p><strong>Standards:</strong> <span data-site-key="footerStandards">ISO 9001:2015 Standards • Certified Pharmaceutical Formulations</span></p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Quick Links</h4>
+          <ul class="space-y-2.5">
+            <li><a href="index.html" class="hover:text-teal-300 transition-colors">Home Page</a></li>
+            <li><a href="about.html" class="hover:text-teal-300 transition-colors">About Us</a></li>
+            <li><a href="products.html" class="hover:text-teal-300 transition-colors">Product Catalogue</a></li>
+            <li><a href="contact.html" class="hover:text-teal-300 transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Product Categories</h4>
+          <ul class="space-y-2.5">
+            <li><a href="products.html?category=tablet" class="hover:text-teal-300 transition-colors">Tablets</a></li>
+            <li><a href="products.html?category=capsule" class="hover:text-teal-300 transition-colors">Capsules</a></li>
+            <li><a href="products.html?category=syrup" class="hover:text-teal-300 transition-colors">Syrups &amp; Liquids</a></li>
+            <li><a href="products.html?category=inject" class="hover:text-teal-300 transition-colors">Injections</a></li>
+            <li><a href="products.html?category=derma" class="hover:text-teal-300 transition-colors">Ointments &amp; Creams</a></li>
+            <li><a href="products.html?category=nutra" class="hover:text-teal-300 transition-colors">Nutraceuticals</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Contact Info</h4>
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-teal-400 shrink-0 mt-0.5"></i>
+              <span class="text-slate-400 site-address" data-site-key="address">Sector 62, Industrial Area, New Delhi / NCR, India</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-teal-400 shrink-0"></i>
+              <span class="text-slate-400 site-phone" data-site-key="phone">+91 98765 43210</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4 text-teal-400 shrink-0"></i>
+              <span class="text-slate-400 site-email" data-site-key="email">info@atikshpharma.com</span>
+            </li>
+            <li class="pt-2">
+              <a href="admin.html" class="inline-flex items-center gap-1.5 text-[11px] font-bold text-teal-300 hover:text-white bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg transition-colors">
+                <i data-lucide="lock" class="w-3 h-3"></i> Admin Portal
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© <span class="current-year">2026</span> Atiksh Pharma. All Rights Reserved.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/919876543210?text=Hello%20Atiksh%20Pharma%2C%20I%20am%20interested%20in%20your%20pharmaceutical%20products." target="_blank" rel="noopener noreferrer" class="whatsapp-float shadow-xl" aria-label="Chat on WhatsApp">
+    <i data-lucide="message-circle" class="w-6 h-6"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="js/api-client.js?v=2.1"></script>
+  <script src="js/site-config.js?v=2.1"></script>
+  <script src="js/site-renderer.js?v=2.1"></script>
+  <script src="js/products-data.js?v=2.1"></script>
+  <script src="js/visitor-auth.js?v=2.1"></script>
+  <script src="js/main.js?v=2.1"></script>
+</body>
+</html>
