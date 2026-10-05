@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atiksh Pharma | Committed to Quality. Driven by Healthcare.</title>
+  <meta name="description" content="Atiksh Pharma delivers reliable pharmaceutical solutions, certified formulations, wholesale institutional supply with an unyielding commitment to quality.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50: '#F0F7FF',
+              100: '#E0F2FE',
+              800: '#172554',
+              900: '#0F172A',
+              primary: '#0A192F',
+              dark: '#07111E',
+            },
+            teal: {
+              50: '#F0FDFA',
+              100: '#CCFBF1',
+              200: '#99F6E4',
+              500: '#14B8A6',
+              600: '#0D9488',
+              700: '#0F766E',
+              800: '#115E59',
+              900: '#134E4A',
+            },
+            charcoal: '#0F172A',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-slate-800 antialiased flex flex-col min-h-screen">
+
+  <!-- TOP BAR -->
+  <div class="bg-navy-dark text-slate-300 text-xs py-2 px-4 border-b border-slate-800/80" style="background-color:#07111E;">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 text-teal-400 font-semibold">
+          <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse-dot"></span>
+          ISO 9001:2015 Standards • Certified Pharmaceutical Formulations
+        </span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <span class="hidden md:inline text-slate-400">Pan-India Supply &amp; Export Solutions</span>
+      </div>
+      <div class="flex items-center gap-6 text-xs font-medium">
+        <a href="tel:+919876543210" class="hover:text-teal-400 transition-colors flex items-center gap-1.5">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-teal-400"></i>
+          <span>+91 98765 43210</span>
+        </a>
+        <a href="mailto:info@atikshpharma.com" class="hover:text-teal-400 transition-colors flex items-center gap-1.5">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-teal-400"></i>
+          <span>info@atikshpharma.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVBAR -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group py-1">
+          <img src="images/symbol.png" alt="Atiksh Pharma" class="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform shrink-0">
+          <div class="flex flex-col justify-center leading-[1.02]">
+            <span class="text-2xl sm:text-[25px] font-black tracking-tight font-brand" style="color: #0A192F;">Atiksh</span>
+            <span class="text-2xl sm:text-[25px] font-black tracking-tight font-brand" style="color: #0D9488;">Pharma</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links (Clean, No Therapeutic Areas) -->
+        <nav class="hidden lg:flex items-center gap-8 font-semibold text-sm text-slate-700">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="about.html" class="nav-link hover:text-navy-primary">About Us</a>
+          <a href="products.html" class="nav-link hover:text-navy-primary">Products Catalogue</a>
+          <a href="contact.html" class="nav-link hover:text-navy-primary">Contact</a>
+        </nav>
+
+        <!-- Right CTA & Mobile Hamburger -->
+        <div class="flex items-center gap-3">
+          <!-- User Profile / Sign In Container -->
+          <div id="public-nav-auth-container" class="flex items-center gap-2">
+            <button type="button" data-open-auth-modal="signin" onclick="openVisitorAuthModal('signin'); return false;" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-slate-700 hover:text-teal-700 bg-slate-100 hover:bg-slate-200/80 rounded-xl transition-all border border-slate-200 cursor-pointer shadow-xs">
+              <i data-lucide="user" class="w-3.5 h-3.5 text-teal-600"></i>
+              <span>Sign In</span>
+            </button>
+          </div>
+
+          <a href="contact.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-white rounded-xl shadow-md transition-all hover:opacity-90" style="background-color:#0D9488;">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+            <span>Enquire Now</span>
+          </a>
+
+          <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100" aria-label="Toggle navigation">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-2 text-sm font-semibold">
+      <!-- Mobile Auth Container -->
+      <div id="mobile-nav-auth-container" class="pb-2 mb-2 border-b border-slate-100">
+        <button type="button" data-open-auth-modal="signin" onclick="openVisitorAuthModal('signin'); return false;" class="w-full py-2.5 px-3 text-xs font-bold text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer">
+          <i data-lucide="user" class="w-3.5 h-3.5 text-teal-600"></i>
+          <span>Sign In / Create Account</span>
+        </button>
+      </div>
+      <a href="index.html" class="block py-2 px-3 text-teal-700 bg-teal-50 rounded-lg">Home</a>
+      <a href="about.html" class="block py-2 px-3 text-slate-700 hover:bg-slate-50 rounded-lg">About Us</a>
+      <a href="products.html" class="block py-2 px-3 text-slate-700 hover:bg-slate-50 rounded-lg">Products Catalogue</a>
+      <a href="contact.html" class="block py-2 px-3 text-slate-700 hover:bg-slate-50 rounded-lg">Contact Us</a>
+      <div class="pt-2">
+        <a href="contact.html" class="block w-full py-2.5 text-center text-xs font-bold text-white bg-teal-600 rounded-lg">
+          Enquire Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION (Crisp White Background, Bold Navy & Teal Typography for Maximum Visibility) -->
+  <section class="relative bg-white py-16 lg:py-24 overflow-hidden border-b border-slate-200 bg-science-grid">
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center sm:text-left">
+      <div class="max-w-4xl mx-auto sm:mx-0 space-y-6">
+          
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-xs font-bold text-teal-800 shadow-2xs">
+            <span class="w-2 h-2 rounded-full bg-teal-600 animate-pulse-dot"></span>
+            <span data-site-key="homeHeroBadge">Pan-India &amp; Global Pharmaceutical Supply</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight font-brand leading-none" style="color:#0A192F;">
+            <span data-site-key="homeHeroTitlePart1">ATIKSH</span> <span data-site-key="homeHeroTitlePart2" style="color:#0D9488;">PHARMA</span>
+          </h1>
+
+          <p class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight" style="color:#0A192F;">
+            <span data-site-key="homeHeroSubtitlePart1">Committed to Quality.</span> <span data-site-key="homeHeroSubtitlePart2" style="color:#0D9488;">Driven by Healthcare.</span>
+          </p>
+
+          <p class="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal" data-site-key="homeHeroDescription">
+            Delivering reliable pharmaceutical solutions with a commitment to quality, innovation and better healthcare across essential formulations, institutional hospital supplies.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-2">
+            <a href="products.html" class="px-8 py-4 text-xs sm:text-sm font-bold text-white rounded-xl shadow-lg transition-all flex items-center gap-2 hover:opacity-95 hover:scale-102" style="background-color:#0D9488;">
+              <span>Explore Products</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a href="contact.html" class="px-8 py-4 text-xs sm:text-sm font-bold text-white rounded-xl shadow-lg transition-all flex items-center gap-2 hover:opacity-95" style="background-color:#0A192F;">
+              <i data-lucide="mail" class="w-4 h-4 text-teal-400"></i>
+              <span>Contact Us</span>
+            </a>
+          </div>
+
+        </div>
+
+      <!-- Trust Metrics Bar -->
+      <div class="pt-12 mt-16 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center sm:text-left">
+        <div class="p-4 bg-slate-50 sm:bg-transparent rounded-2xl border sm:border-0 border-slate-200">
+          <div class="text-3xl sm:text-4xl font-black font-brand" style="color:#0A192F;" data-site-key="homeMetric1Num">500+</div>
+          <div class="text-xs text-slate-600 font-bold mt-1" data-site-key="homeMetric1Label">Approved Formulations</div>
+        </div>
+        <div class="p-4 bg-slate-50 sm:bg-transparent rounded-2xl border sm:border-0 border-slate-200">
+          <div class="text-3xl sm:text-4xl font-black font-brand" style="color:#0D9488;" data-site-key="homeMetric2Num">100%</div>
+          <div class="text-xs text-slate-600 font-bold mt-1" data-site-key="homeMetric2Label">Quality Assurance Standards</div>
+        </div>
+        <div class="p-4 bg-slate-50 sm:bg-transparent rounded-2xl border sm:border-0 border-slate-200">
+          <div class="text-3xl sm:text-4xl font-black font-brand" style="color:#0A192F;" data-site-key="homeMetric3Num">28+</div>
+          <div class="text-xs text-slate-600 font-bold mt-1" data-site-key="homeMetric3Label">States Distribution Reach</div>
+        </div>
+        <div class="p-4 bg-slate-50 sm:bg-transparent rounded-2xl border sm:border-0 border-slate-200">
+          <div class="text-3xl sm:text-4xl font-black font-brand" style="color:#0D9488;" data-site-key="homeMetric4Num">Quality</div>
+          <div class="text-xs text-slate-600 font-bold mt-1" data-site-key="homeMetric4Label">Batch Tested Purity</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT ATIKSH PHARMA SECTION -->
+  <section class="py-20 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-wider" data-site-key="homeAboutBadge">
+            About Our Enterprise
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-black tracking-tight font-brand" style="color:#0A192F;" data-site-key="homeAboutTitle">
+            Advancing Healthcare Through Quality
+          </h2>
+
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-site-key="homeAboutParagraph1">
+            Atiksh Pharma is an established pharmaceutical enterprise committed to the highest standards of scientific formulation, regulatory compliance, and reliable healthcare distribution. We collaborate with medical institutions, healthcare providers, and distributors across India.
+          </p>
+
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-site-key="homeAboutParagraph2">
+            Our portfolio spans essential formulations engineered to treat critical conditions. Every batch adheres to rigorous Quality Control and Quality Assurance protocols to ensure uncompromised therapeutic efficacy.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4 pt-2">
+            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-xs">
+              <i data-lucide="shield-check" class="w-6 h-6 text-teal-600 mb-2"></i>
+              <h4 class="text-sm font-bold text-slate-900">Zero-Defect Philosophy</h4>
+              <p class="text-xs text-slate-500 mt-1">Multi-stage analytical validation for every batch release.</p>
+            </div>
+            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-xs">
+              <i data-lucide="truck" class="w-6 h-6 text-teal-600 mb-2"></i>
+              <h4 class="text-sm font-bold text-slate-900">National Supply Chain</h4>
+              <p class="text-xs text-slate-500 mt-1">Express logistics ensuring seamless availability.</p>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href="about.html" class="inline-flex items-center gap-2 text-xs font-bold text-teal-700 hover:text-teal-800">
+              <span>Read Full Corporate Profile</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-white p-2">
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop&q=80" alt="Atiksh Pharma Facility" data-site-key="homeAboutImage" class="w-full h-96 object-cover rounded-2xl">
+            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl text-white border border-white/10" style="background-color:rgba(10, 25, 47, 0.95);">
+              <p class="text-xs font-bold text-teal-300 uppercase tracking-wider" data-site-key="homeAboutImageBadge">Scientific Discipline</p>
+              <p class="text-xs text-slate-200 mt-1" data-site-key="homeAboutImageCaption">Delivering clinical efficacy through certified manufacturing and stringent QA/QC oversight.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS SECTION -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-md">
+            Flagship Formulations
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black tracking-tight font-brand mt-2" style="color:#0A192F;">
+            Featured Products
+          </h2>
+          <p class="text-slate-500 text-sm mt-1 max-w-xl">
+            High-demand pharmaceutical formulations available for immediate institutional and wholesale supply.
+          </p>
+        </div>
+        <a href="products.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-50 hover:bg-slate-100 text-slate-900 text-xs font-bold rounded-xl border border-slate-200 transition-colors shadow-xs">
+          <span>View All Products Catalogue</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-teal-600"></i>
+        </a>
+      </div>
+
+      <!-- Dynamic Product Cards Grid -->
+      <div id="home-featured-products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered by js/main.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUALITY AT EVERY STEP SECTION -->
+  <section class="py-20 bg-slate-50 bg-science-grid border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-3 py-1 rounded-md" data-site-key="homeQualityBadge">
+          Scientific Rigor
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black tracking-tight font-brand mt-2" style="color:#0A192F;" data-site-key="homeQualityTitle">
+          Quality at Every Step
+        </h2>
+        <p class="text-slate-600 text-sm mt-2" data-site-key="homeQualityDescription">
+          From raw active pharmaceutical ingredient (API) inspection to finished batch distribution, quality compliance is built into every phase of our operations.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- QA -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-4">
+            <i data-lucide="clipboard-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Quality Assurance (QA)</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Standard Operating Procedures (SOPs), documentation validation, and comprehensive batch history tracking ensuring continuous compliance.
+          </p>
+        </div>
+
+        <!-- QC -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-4">
+            <i data-lucide="microscope" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Quality Control (QC)</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Modern analytical testing including HPLC, dissolution rate testing, microbiological assays, and accelerated stability chambers.
+          </p>
+        </div>
+
+        <!-- R&D -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-4">
+            <i data-lucide="flask-conical" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Research &amp; Development</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Continuous formulation optimization, bioavailability enhancement, and specialized drug release profiles.
+          </p>
+        </div>
+
+        <!-- Manufacturing Standards -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-4">
+            <i data-lucide="factory" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Manufacturing Standards</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            HVAC controlled cleanroom environments, laminar air flow systems, and automated blister packaging lines.
+          </p>
+        </div>
+
+        <!-- Regulatory Compliance -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-4">
+            <i data-lucide="file-badge" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Regulatory Compliance</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            All formulations produced in accordance with Schedule M norms, and national drug authority guidelines.
+          </p>
+        </div>
+
+        <!-- Stability & Packaging -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-4">
+            <i data-lucide="box" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Packaging Integrity</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            High barrier Alu-Alu and specialized blister foils shielding active ingredients from humidity, light, and oxidation.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="about.html" class="inline-flex items-center gap-2 px-6 py-3 text-white rounded-xl text-xs font-bold transition-all hover:opacity-90" style="background-color:#0A192F;">
+          <span>Explore Quality &amp; Compliance Details</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-teal-400"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY ATIKSH PHARMA SECTION (6 Feature Cards) -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-md" data-site-key="homeWhyBadge">
+          Corporate Advantage
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black tracking-tight font-brand mt-2" style="color:#0A192F;" data-site-key="homeWhyTitle">
+          Why Atiksh Pharma
+        </h2>
+        <p class="text-slate-600 text-sm mt-2" data-site-key="homeWhyDescription">
+          A dedicated pharmaceutical partner delivering reliability, clinical efficacy, and collaborative commercial value.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-10 h-10 rounded-xl bg-navy-primary text-teal-400 flex items-center justify-center mb-4" style="background-color:#0A192F;">
+            <i data-lucide="award" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1.5">Quality Focused</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Uncompromising adherence to pharmacopoeial specifications, certified ingredients, and validated quality release checks.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-10 h-10 rounded-xl bg-navy-primary text-teal-400 flex items-center justify-center mb-4" style="background-color:#0A192F;">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1.5">Reliable Products</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            High-bioavailability finished formulations trusted across hospitals, dispensaries, and retail pharmacies pan-India.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-10 h-10 rounded-xl bg-navy-primary text-teal-400 flex items-center justify-center mb-4" style="background-color:#0A192F;">
+            <i data-lucide="atom" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1.5">Scientific Approach</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Therapeutically sound formulations designed by pharmaceutical experts to deliver optimum patient outcomes.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-10 h-10 rounded-xl bg-navy-primary text-teal-400 flex items-center justify-center mb-4" style="background-color:#0A192F;">
+            <i data-lucide="users" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1.5">Customer Centric</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Dedicated commercial relationship managers providing rapid order dispatch, quotation turnaround, and technical support.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-10 h-10 rounded-xl bg-navy-primary text-teal-400 flex items-center justify-center mb-4" style="background-color:#0A192F;">
+            <i data-lucide="clock" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1.5">Consistent Supply</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Robust inventory buffering and logistics partners ensuring continuous stock availability with minimal lead times.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-xs pharma-card">
+          <div class="w-10 h-10 rounded-xl bg-navy-primary text-teal-400 flex items-center justify-center mb-4" style="background-color:#0A192F;">
+            <i data-lucide="heart" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1.5">Healthcare Driven</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Guided by an ethical commitment to make essential, high-efficacy therapeutics accessible and affordable.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BUSINESS / DISTRIBUTOR PARTNER CTA -->
+  <section class="py-16 bg-navy-gradient text-white relative overflow-hidden" style="background: linear-gradient(135deg, #07111E 0%, #0A192F 50%, #172554 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div class="max-w-2xl text-center lg:text-left">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-300 bg-white/10 px-3 py-1 rounded-md inline-block mb-3">
+            Collaborative Opportunities
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black font-brand">
+            Contact Atiksh Pharma
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-2 leading-relaxed">
+            Have questions about our pharmaceutical formulations? Get in touch with our commercial desk to discuss supplies, quotations, and product enquiries.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 shrink-0">
+          <a href="contact.html" class="px-6 py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg transition-colors flex items-center gap-2">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            <span>Contact Us</span>
+          </a>
+          <a href="contact.html" class="px-6 py-3.5 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4 text-teal-300"></i>
+            <span>Send Enquiry</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAST PRODUCT ENQUIRY SECTION -->
+  <section class="py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-white p-7 sm:p-10 rounded-3xl border border-slate-200 shadow-sm">
+        <div class="text-center max-w-xl mx-auto mb-8">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-3 py-1 rounded-md inline-block mb-2">
+            Fast Product Enquiry
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 font-brand" style="color:#0A192F;">
+            Submit Product Enquiry
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1.5">
+            Fill in your requirements below for wholesale orders, institutional supplies, or quotations. Our team will respond within 24 hours.
+          </p>
+        </div>
+
+        <form id="pharma-inquiry-form" class="space-y-4 text-xs">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Your Full Name *</label>
+              <input type="text" name="fullName" required placeholder="e.g. Dr. Rajesh Sharma" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:bg-white focus:border-teal-600 outline-none">
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Company / Institution</label>
+              <input type="text" id="inquiry-company-input" placeholder="e.g. Apex Hospital / Pharma Distributor" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:bg-white focus:border-teal-600 outline-none">
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Phone / WhatsApp Number *</label>
+              <input type="tel" name="phone" required placeholder="+91 98765 00000" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:bg-white focus:border-teal-600 outline-none">
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Official Email *</label>
+              <input type="email" name="email" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:bg-white focus:border-teal-600 outline-none">
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Inquiry Nature</label>
+              <select id="inquiry-type-select" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:bg-white focus:border-teal-600 outline-none">
+                <option value="Commercial Supply">Wholesale &amp; Institutional Supply</option>
+                <option value="Hospital Supply">Hospital &amp; Institutional Supply</option>
+                <option value="Distribution Partnership">Distribution Partnership</option>
+                <option value="Product Information">Product Specification &amp; Quotation</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Product(s) of Interest</label>
+              <input type="text" id="inquiry-products-input" placeholder="e.g. ATIKSH-CV 625, ATIKSH-DSR" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:bg-white focus:border-teal-600 outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 uppercase tracking-wider mb-1">Message &amp; Batch Quantity</label>
+            <textarea rows="3" placeholder="Provide details regarding expected volume, packaging, and supply schedule..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:bg-white focus:border-teal-600 outline-none"></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="w-full py-3.5 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2 hover:opacity-90 cursor-pointer" style="background-color:#0A192F;">
+              <i data-lucide="send" class="w-4 h-4 text-teal-400"></i>
+              <span>Submit Enquiry</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PREMIUM DARK FOOTER -->
+  <footer class="bg-navy-dark text-slate-300 text-xs pt-16 pb-8 border-t border-slate-800" style="background-color:#07111E;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+        
+        <!-- Company Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-3 group">
+            <img src="images/symbol-light.png" alt="Atiksh Pharma" class="h-10 sm:h-11 w-auto object-contain shrink-0">
+            <div class="flex flex-col justify-center leading-[1.02]">
+              <span class="text-2xl sm:text-[25px] font-black tracking-tight text-white font-brand">Atiksh</span>
+              <span class="text-2xl sm:text-[25px] font-black tracking-tight text-teal-400 font-brand">Pharma</span>
+            </div>
+          </a>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+            Atiksh Pharma is a healthcare and pharmaceutical enterprise committed to ethical business practices, high formulation efficacy, and nationwide institutional supply.
+          </p>
+          <div class="pt-1 text-[11px] text-slate-400 space-y-1">
+            <p><strong>Standards:</strong> <span data-site-key="footerStandards">ISO 9001:2015 Standards • Certified Pharmaceutical Formulations</span></p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Quick Links</h4>
+          <ul class="space-y-2.5">
+            <li><a href="index.html" class="hover:text-teal-300 transition-colors">Home Page</a></li>
+            <li><a href="about.html" class="hover:text-teal-300 transition-colors">About Us</a></li>
+            <li><a href="products.html" class="hover:text-teal-300 transition-colors">Product Catalogue</a></li>
+            <li><a href="contact.html" class="hover:text-teal-300 transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Product Categories -->
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Product Categories</h4>
+          <ul class="space-y-2.5">
+            <li><a href="products.html?category=tablet" class="hover:text-teal-300 transition-colors">Tablets</a></li>
+            <li><a href="products.html?category=capsule" class="hover:text-teal-300 transition-colors">Capsules</a></li>
+            <li><a href="products.html?category=syrup" class="hover:text-teal-300 transition-colors">Syrups &amp; Liquids</a></li>
+            <li><a href="products.html?category=inject" class="hover:text-teal-300 transition-colors">Injections</a></li>
+            <li><a href="products.html?category=derma" class="hover:text-teal-300 transition-colors">Ointments &amp; Creams</a></li>
+            <li><a href="products.html?category=nutra" class="hover:text-teal-300 transition-colors">Nutraceuticals</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Contact Info</h4>
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-teal-400 shrink-0 mt-0.5"></i>
+              <span class="text-slate-400 site-address" data-site-key="address">Sector 62, Industrial Area, New Delhi / NCR, India</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-teal-400 shrink-0"></i>
+              <span class="text-slate-400 site-phone" data-site-key="phone">+91 98765 43210</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4 text-teal-400 shrink-0"></i>
+              <span class="text-slate-400 site-email" data-site-key="email">info@atikshpharma.com</span>
+            </li>
+            <li class="pt-2">
+              <a href="admin.html" class="inline-flex items-center gap-1.5 text-[11px] font-bold text-teal-300 hover:text-white bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg transition-colors">
+                <i data-lucide="lock" class="w-3 h-3"></i> Admin Portal
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© <span class="current-year">2026</span> Atiksh Pharma. All Rights Reserved.</p>
+        <p class="text-center sm:text-right text-[11px]">
+          Disclaimer: Information on this website is intended for healthcare professionals, institutions, and trade partners.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/919876543210?text=Hello%20Atiksh%20Pharma%2C%20I%20am%20interested%20in%20your%20pharmaceutical%20products." target="_blank" rel="noopener noreferrer" class="whatsapp-float shadow-xl" aria-label="Chat on WhatsApp">
+    <i data-lucide="message-circle" class="w-6 h-6"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="js/api-client.js?v=2.1"></script>
+  <script src="js/site-config.js?v=2.1"></script>
+  <script src="js/site-renderer.js?v=2.1"></script>
+  <script src="js/products-data.js?v=2.1"></script>
+  <script src="js/visitor-auth.js?v=2.1"></script>
+  <script src="js/main.js?v=2.1"></script>
+</body>
+</html>

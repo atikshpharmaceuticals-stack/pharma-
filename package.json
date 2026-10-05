@@ -1,0 +1,19 @@
+{
+  "name": "atiksh-pharma",
+  "version": "1.0.0",
+  "description": "Atiksh Pharma Certified Formulations Web Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "pharmaceutical",
+    "healthcare",
+    "formulations"
+  ],
+  "author": "Atiksh Pharma",
+  "license": "ISC"
+}

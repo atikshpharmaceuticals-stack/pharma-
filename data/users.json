@@ -1,0 +1,10 @@
+[
+  {
+    "email": "test@hospital.com",
+    "id": "USR-test-1",
+    "name": "Doctor Test",
+    "password": "password123",
+    "phone": "9988776655",
+    "registeredAt": "5/10/2026, 4:53:24 am"
+  }
+]
