@@ -15,13 +15,16 @@ document.addEventListener('DOMContentLoaded', async function() {
   initSiteCustomizerForm();
   updateAdminStats();
 
-  // Immediate Cloud Fetch from Firebase / Backend upon opening Admin Panel
+  // Immediate Cloud Fetch from Railway / Backend upon opening Admin Panel
   if (window.AtikshAPI) {
     try {
-      await AtikshAPI.getInquiries();
-      await AtikshAPI.getProducts();
-      await AtikshAPI.getUsers();
-      await AtikshAPI.getConfig();
+      await Promise.all([
+        AtikshAPI.getAdminPassword(),
+        AtikshAPI.getInquiries(),
+        AtikshAPI.getProducts(),
+        AtikshAPI.getUsers(),
+        AtikshAPI.getConfig()
+      ]);
       renderAdminProductsTable();
       renderAdminInquiriesTable();
       renderAdminUsersTable();
@@ -841,10 +844,10 @@ function getAdminPassword() {
   return localStorage.getItem('atiksh_admin_password') || DEFAULT_ADMIN_PASSWORD;
 }
 
-function setAdminPassword(newPassword) {
+async function setAdminPassword(newPassword) {
   localStorage.setItem('atiksh_admin_password', newPassword);
   if (window.AtikshAPI && typeof window.AtikshAPI.saveAdminPassword === 'function') {
-    window.AtikshAPI.saveAdminPassword(newPassword);
+    await window.AtikshAPI.saveAdminPassword(newPassword);
   }
 }
 
@@ -867,17 +870,37 @@ function checkAdminAuth() {
   }
 }
 
-function handleAdminLogin(event) {
+async function handleAdminLogin(event) {
   event.preventDefault();
   const pwdInput = document.getElementById('admin-login-password');
   const errEl = document.getElementById('admin-login-error');
+  const submitBtn = event.target ? event.target.querySelector('button[type="submit"]') : null;
   if (!pwdInput) return;
 
   const entered = pwdInput.value.trim();
-  const currentSaved = getAdminPassword();
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-75');
+  }
+
+  // Always check live cloud password so changes on another device work instantly
+  let currentSaved = getAdminPassword();
+  if (window.AtikshAPI && typeof window.AtikshAPI.getAdminPassword === 'function') {
+    try {
+      const serverPwd = await window.AtikshAPI.getAdminPassword();
+      if (serverPwd) currentSaved = serverPwd;
+    } catch (e) {}
+  }
+
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.classList.remove('opacity-75');
+  }
 
   if (entered === currentSaved) {
     sessionStorage.setItem('atiksh_admin_auth', 'true');
+    localStorage.setItem('atiksh_admin_password', currentSaved);
     if (errEl) errEl.classList.add('hidden');
     pwdInput.value = '';
 
@@ -888,7 +911,7 @@ function handleAdminLogin(event) {
     showToast("Welcome to Atiksh Pharma Admin Portal");
     initLucide();
 
-    // Immediately fetch latest live data from Firebase cloud upon login
+    // Immediately fetch latest live data upon login
     if (window.AtikshAPI) {
       Promise.all([
         AtikshAPI.getProducts(),
@@ -920,7 +943,7 @@ function handleAdminLogout() {
   showToast("Logged out successfully");
 }
 
-function handleAdminChangePassword() {
+async function handleAdminChangePassword() {
   const curInput = document.getElementById('change-pwd-current');
   const newInput = document.getElementById('change-pwd-new');
   const confInput = document.getElementById('change-pwd-confirm');
@@ -931,7 +954,14 @@ function handleAdminChangePassword() {
   const newEntered = newInput.value.trim();
   const confEntered = confInput.value.trim();
 
-  const realCurrent = getAdminPassword();
+  // Fetch current live password from Railway/cloud server
+  let realCurrent = getAdminPassword();
+  if (window.AtikshAPI && typeof window.AtikshAPI.getAdminPassword === 'function') {
+    try {
+      const serverPwd = await window.AtikshAPI.getAdminPassword();
+      if (serverPwd) realCurrent = serverPwd;
+    } catch (e) {}
+  }
 
   if (currentEntered !== realCurrent) {
     alert("Incorrect Current Password! Please enter your existing password correctly.");
@@ -951,13 +981,14 @@ function handleAdminChangePassword() {
     return;
   }
 
-  // Save new password
-  setAdminPassword(newEntered);
+  // Save new password locally and sync to Railway cloud database
+  showToast("Updating password across all devices...");
+  await setAdminPassword(newEntered);
   curInput.value = '';
   newInput.value = '';
   confInput.value = '';
 
-  showToast("Password updated successfully! Keep your new password safe.");
+  showToast("Password updated successfully! Synced across all devices.");
 }
 
 function togglePasswordVisibility(inputId, btnEl) {
@@ -1066,7 +1097,7 @@ function importFullSiteDatabase(e) {
         saveSiteConfig(data.config);
       }
       if (data.adminPassword) {
-        setAdminPassword(data.adminPassword);
+        await setAdminPassword(data.adminPassword);
       }
 
       renderAdminProductsTable();

@@ -188,14 +188,15 @@ const server = http.createServer(async (req, res) => {
       // 5. ADMIN AUTH SETTINGS (Password) API
       if (pathname === '/api/admin/password') {
         if (req.method === 'GET') {
-          const pwdObj = readJsonFile('admin-auth.json', { password: '' });
-          return sendJson(res, 200, pwdObj);
+          const pwdObj = readJsonFile('admin-auth.json', { password: 'admin123' });
+          const password = (pwdObj && pwdObj.password) ? pwdObj.password : 'admin123';
+          return sendJson(res, 200, { password });
         }
         if (req.method === 'POST') {
           const body = await parseBody(req);
           if (body && body.password) {
             writeJsonFile('admin-auth.json', { password: body.password });
-            return sendJson(res, 200, { success: true });
+            return sendJson(res, 200, { success: true, password: body.password });
           }
           return sendJson(res, 400, { error: 'Password required' });
         }

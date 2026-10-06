@@ -218,23 +218,25 @@ input:focus, select:focus, textarea:focus {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 54px;
-  height: 54px;
-  background: linear-gradient(135deg, #0D9488 0%, #0F766E 100%);
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 25px rgba(13, 148, 136, 0.4);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
   z-index: 999;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.25);
 }
 .whatsapp-float:hover {
-  transform: scale(1.08) rotate(5deg);
-  box-shadow: 0 14px 30px rgba(13, 148, 136, 0.55);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.65);
+  color: #ffffff;
 }
 
 /* Live Pulse Animation */
